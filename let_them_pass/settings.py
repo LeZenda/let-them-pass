@@ -26,7 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://let-them-pass.herokuapp.com'
+]
 
 # Application definition
 
