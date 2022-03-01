@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+    {% if news_list %}
+        <div class="container">
+        {% for news in news_list %}
+            <h1>{{ news.heading }}</h1>
+            <p>{{ news.news.html|safe }}</p>
+            <span class="badge">{{ news.updated_at|date:'Y-m-d H:i' }}</span>
+
+            <div class="line"></div>
+        {% endfor %}
+        </div>
+    {% else %}
+        <p>No news are available.</p>
+    {% endif %}
+{% endblock %}

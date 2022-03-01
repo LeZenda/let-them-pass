@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block body %}
+    {% if crossings_list %}
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Country Name</th>
+            <th scope="col">Crossing Name</th>
+            <th scope="col">Car queue</th>
+            <th scope="col">Pedestrian Queue</th>
+            <th scope="col">Car Wait Time</th>
+            <th scope="col">Last Update</th>
+        </tr>
+
+        {% for crossing in crossings_list %}
+        <tr>
+            <th scope="col">{{ crossing.country.name }}</th>
+            <th scope="col">{{ crossing.name }}</th>
+            <th scope="col">{{ crossing.car_queue_length }} km</th>
+            <th scope="col">{{ crossing.pedestrian_queue_length }}</th>
+            <th scope="col">{{ crossing.car_queue_wait_time }} h</th>
+            <th scope="col">{{ crossing.updated_at|date:'Y-m-d H:i' }}</th>
+        </tr>
+
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>No Crossings are available.</p>
+    {% endif %}
+{% endblock %}
