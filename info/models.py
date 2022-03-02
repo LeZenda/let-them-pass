@@ -27,7 +27,7 @@ class Crossing(models.Model):
     name = models.CharField(max_length=200)
     order = models.IntegerField()
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    car_queue_length = models.IntegerField(blank=True,null=True)
+    car_queue_length = models.FloatField(blank=True,null=True)
     pedestrian_queue_length = models.IntegerField(blank=True,null=True)
     car_queue_wait_time = models.IntegerField(blank=True,null=True)
     comments = QuillField(blank=True,null=True)
