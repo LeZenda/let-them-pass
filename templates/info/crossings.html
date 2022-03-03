@@ -4,28 +4,30 @@
 
 {% block body %}
     {% if crossings_list %}
-    <div class="table-responsive-xs">
-        <table class="table table-striped">
+    <div class="container">
+        <table id=example width=100% class="table table-bordered table-hover table-striped">
+        <thead>
             <tr>
-                <th class="col-md-1" scope="col">Країна/Country Name</th>
+                <th>Країна/Country Name</th>
                 <th class="col-md-4" scope="col">Пропускний пункт/Crossing Name</th>
-                <th class="col-md-1" scope="col">Автомобільна черга/Car queue</th>
-                <th class="col-md-1" scope="col">Кількість пішоходів/Pedestrian Queue</th>
-                <th class="col-md-1" scope="col">Час очікування в автомобільній черзі/Car Wait Time</th>
-                <th class="col-md-1" scope="col">Актуальність данних/Last Update</th>
-                <th class="col-md-1" scope="col">Додаткові данні/Extra info</th>
+                <th>Автомобільна черга/Car queue</th>
+                <th>Кількість пішоходів/Pedestrian Queue</th>
+                <th>Час очікування в автомобільній черзі/Car Wait Time</th>
+                <th>Актуальність данних/Last Update</th>
+                <th>Додаткові данні/Extra info</th>
             </tr>
+            </thead>
 
             <tbody>
             {% for crossing in crossings_list %}
                 <tr>
-                    <td scope="row">{{ crossing.country.name }}</td>
-                    <td scope="row">{{ crossing.name }}</td>
-                    <td scope="row">{{ crossing.car_queue_length }} км</td>
-                    <td scope="row">{% if crossing.pedestrian_queue_length is not None %}{{ crossing.pedestrian_queue_length }}{% else %}No crossing/Відсутній{% endif %}</td>
-                    <td scope="row">{{ crossing.car_queue_wait_time }} годин</td>
-                    <td scope="row">{{ crossing.updated_at|date:'Y-m-d H:i' }}</td>
-                    <td scope="row">{{ crossing.comments.html|safe }}</td>
+                    <td >{{ crossing.country.name }}</td>
+                    <td >{{ crossing.name }}</td>
+                    <td >{{ crossing.car_queue_length }} км</td>
+                    <td >{% if crossing.pedestrian_queue_length is not None %}{{ crossing.pedestrian_queue_length }}{% else %}No crossing/Відсутній{% endif %}</td>
+                    <td >{{ crossing.car_queue_wait_time }} годин</td>
+                    <td >{{ crossing.updated_at|date:'Y-m-d H:i' }}</td>
+                    <td >{{ crossing.comments.html|safe }}</td>
                 </tr>
                 
                 {% endfor %}
