@@ -26,6 +26,9 @@
                 <li class="{% if request.path == '/crossings/' %}active{% endif %}">
                     <a href="{% url 'crossings' %}">Напрями</a>
                 </li>
+                <li class="{% if '/countries/' in request.path %}active{% endif %}">
+                    <a href="{% url 'countries' %}">Країни</a>
+                </li>
             </ul>
 
         </nav>

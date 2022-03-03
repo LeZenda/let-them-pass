@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Новини{% endblock %}
+
+{% block body %}
+    <span class="badge"><a href="{% url 'countries' %}">До списку Країн</a></span>
+    <div class="container">
+        <h1>{{ country.name }}</h1>
+        <span class="badge">{{ country.comments.html|safe }}</span>
+
+    </div>
+{% endblock %}
