@@ -19,9 +19,10 @@
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav class="navbar navbar-default header">
+            <div class="container">
             <div class="container-fluid">
               <div class="navbar-header">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     {% load static %}
                     <img src="{% static 'media/logo.svg' %}" alt="logo">
                 </a>
@@ -47,6 +48,7 @@
                 </ul>
             </div>
             </div>
+            </div>
           </nav>
 
           <ul class="col-sm-5 nav navbar-nav navbar-right navbar-mobile hidden">
@@ -66,20 +68,11 @@
 
         <!-- Page Content  -->
         <div id="content">
-
-            <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                    </div>
-                </div>
-            </nav> -->
-
-
-    {% block body %}
-    {% endblock %}</div>
+            <div class="container">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
     </div>
 </body>
 <!-- Footer -->
@@ -187,6 +180,12 @@ a:focus {
     align-items: stretch;
 }
 
+.container {
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 .header {
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.12), 0px 0px 1px rgba(0, 0, 0, 0.4);
     margin-bottom: 1px;
@@ -256,12 +255,6 @@ a:focus {
     height: 100%;
     width: 100%;
     z-index: 20;
-}
-
-.navbar-mobile-close {
-    /* position: absolute;
-    right: 15px;
-    top: 10px; */
 }
 
 .active>a{
@@ -470,7 +463,13 @@ $(document).ready(function () {
     });
 
     // Activate table library
-    $('#example').DataTable();
+    $('#example').DataTable({
+        paging: false,
+        language: {
+            search: "Пошук: ",
+            info: ""
+        }
+    });
 
     // If something in mobile navigation menu pressed - hide menu
     $('.navbar-mobile>li>a').on('click', function () {
@@ -480,7 +479,6 @@ $(document).ready(function () {
     menuBtn.on('click', function () {
         $('.navbar-mobile').toggleClass('hidden');
     })
-
 });
 </script>
 </html>
