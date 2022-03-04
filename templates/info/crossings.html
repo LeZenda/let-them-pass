@@ -25,7 +25,7 @@
                     <td >{{ crossing.name }}</td>
                     <td >{{ crossing.car_queue_length }} км</td>
                     <td >{% if crossing.pedestrian_queue_length is not None %}{{ crossing.pedestrian_queue_length }}{% else %}No crossing/Відсутній{% endif %}</td>
-                    <td >{{ crossing.car_queue_wait_time }} годин</td>
+                    <td >{{ crossing.car_queue_wait_time }} год</td>
                     <td >{{ crossing.updated_at|date:'Y-m-d H:i' }}</td>
                     <td >{{ crossing.comments.html|safe }}</td>
                 </tr>
