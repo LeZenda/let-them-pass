@@ -4,16 +4,18 @@
 
 {% block body %}
     {% if news_list %}
-        <div class="container">
+        <div class="country-wrapper">
         {% for news in news_list %}
-            <h1>{{ news.heading }}</h1>
-            <p>{{ news.news.html|safe }}</p>
-            <span class="badge">{{ news.updated_at|date:'Y-m-d H:i' }}</span>
-
-            <div class="line"></div>
+        <section class="country news-card">
+            <div class="news-header">
+                <h2>{{ news.heading }}</h2>
+                <span class="news-time">{{ news.updated_at|date:'Y-m-d H:i' }}</span>
+            </div>
+            <p class="news-text">{{ news.news.html|safe }}</p>
+        </section>
         {% endfor %}
-        </div>
     {% else %}
         <p>No news are available.</p>
     {% endif %}
+    </div>
 {% endblock %}

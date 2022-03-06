@@ -3,10 +3,17 @@
 {% block title %}Новини{% endblock %}
 
 {% block body %}
-    <span class="badge"><a href="{% url 'countries' %}">До списку Країн</a></span>
-    <div class="container">
-        <h1>{{ country.name }}</h1>
-        <span class="badge">{{ country.comments.html|safe }}</span>
-
+    <div class="country-wrapper">
+        <a class="country-back-btn" href="{% url 'countries' %}">
+            <i class="glyphicon glyphicon-arrow-left"></i>
+            <span class="country-back-btn-text">Назад до списку країн</span> 
+        </a>
+        <section class="country">
+            <h1>{{ country.name }}</h1>
+            <div>
+                {{country.comments.html|safe}}
+            </div>
+        </section>
     </div>
+
 {% endblock %}

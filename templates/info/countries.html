@@ -4,13 +4,15 @@
 
 {% block body %}
     {% if country_list %}
-        <div class="container">
-        {% for country in country_list %}
-            <h2>{{ country.name }}</h2>
-            <span class="badge"><a href="{% url 'country' country.id %}">Деталі</a></span>
-
-            <div class="line"></div>
-        {% endfor %}
+        <div class="country-list">
+            {% for country in country_list %}
+                <a href="{% url 'country' country.id %}" class="country-card">
+                    <div class="country-container">
+                        <h2>{{ country.name }}</h2>
+                        <i class="glyphicon glyphicon-arrow-right"></i>
+                    </div>
+                </a>
+            {% endfor %}
         </div>
     {% else %}
         <p>No news are available.</p>

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src=https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/js/jquery.dataTables.min.js></script>
     <script src=https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/js/dataTables.bootstrap.min.js></script>
     
@@ -79,12 +80,14 @@
 <footer class="text-center text-lg-start bg-light text-muted footer">
   
 <!-- Contacts -->
-    <div class="footer-container">
-    <h4 class="footer-title">Контакти:</h4>
-    <ul class="footer-links">
-        <li class="footer-links-item"><a class="text-reset fw-bold footer-phone" target="_blank" href="tel:+380939345180">+380939345180</a></li>
-        <li class="footer-links-item"><a class="text-reset fw-bold footer-phone" target="_blank" href="https://telegram.me/GreenLines_Ua">Телеграм: @GreenLines_Ua</a></li>
-    </ul>
+    <div class="container">
+        <div class="footer-container">
+            <h4 class="footer-title">Контакти:</h4>
+            <ul class="footer-links">
+                <li class="footer-links-item"><a class="text-reset fw-bold footer-phone" target="_blank" href="tel:+380939345180">+380939345180</a></li>
+                <li class="footer-links-item"><a class="text-reset fw-bold footer-phone" target="_blank" href="https://telegram.me/GreenLines_Ua">Телеграм: @GreenLines_Ua</a></li>
+            </ul>
+        </div>
     </div>
 
 <!-- Contacts -->
@@ -103,7 +106,7 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     background: #fafafa;
 }
 
@@ -116,12 +119,17 @@ button {
     background-color: transparent;
 }
 
+h2 {
+    font-size: 24px;
+    color: #212529;
+    font-weight: bold;
+}
+
 p {
-    font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #999;
+    color: #212529;
 }
 
 li.active {
@@ -424,6 +432,91 @@ a.article:hover {
     }
 
 /* ---------------------------------------------------
+TABLE STYLE
+----------------------------------------------------- */
+
+/* ---------------------------------------------------
+    СOUNTRY STYLE
+----------------------------------------------------- */
+
+    .country-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 260px);
+        grid-column-gap: 24px;
+        grid-row-gap: 24px;
+    }
+
+    .country-card {
+        padding: 24px;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.12), 0px 0px 1px rgba(0, 0, 0, 0.4);
+        background-color: #fff;
+        border-radius: 8px;
+        max-width: 261px;
+        width: 100%;
+        text-align: left;
+    }
+
+    .country-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .country {
+        background: #FFFFFF;
+        box-shadow: 0px 5px 8px rgb(0 0 0 / 15%), 0px 0px 1px rgb(0 0 0 / 40%);
+        border-radius: 8px;
+        padding: 24px;
+    }
+
+    .country-wrapper {
+        max-width: 740px;
+        margin: 0 auto;
+    }
+
+    .country-card h2 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .country-back-btn {
+        display: flex;
+        margin-bottom: 24px;
+    }
+
+    .country-back-btn-text {
+        margin-left: 11px;
+        margin-top: -2px;
+    }
+
+/* ---------------------------------------------------
+    СOUNTRY STYLE
+----------------------------------------------------- */
+
+/* ---------------------------------------------------
+    NEWS STYLE
+----------------------------------------------------- */
+
+.news-card {
+    margin-bottom: 24px;
+}
+
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.news-time {
+    color: #6C757D;
+}
+
+/* ---------------------------------------------------
+    NEWS STYLE
+----------------------------------------------------- */
+
+/* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
 
@@ -446,6 +539,19 @@ a.article:hover {
     .footer-title {
         margin: 3px 0;
     }
+
+    .table-container {
+        overflow-x: scroll;
+    }
+
+    .active > a {
+        font-weight: bold;
+    }
+
+    .news-header {
+        flex-direction: column;
+        align-items: initial;
+    }
 }
 </style>
 <script>
@@ -457,14 +563,14 @@ $(document).ready(function () {
         $(".navbar-mobile").hide();
     };
 
-
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });
 
     // Activate table library
-    $('#example').DataTable({
+    $('#crossingTable').DataTable({
         paging: false,
+        responsive: true,
         language: {
             search: "Пошук: ",
             info: ""
